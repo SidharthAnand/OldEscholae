@@ -17,7 +17,7 @@ def index():
         create_post(name, post)
         print('post created ')
 
-    posts = get_post()
+    posts = reversed(get_post())
 
     return render_template('index.html', posts=posts)
 
