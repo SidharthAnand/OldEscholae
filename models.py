@@ -8,7 +8,7 @@ db = cluster['test']
 def create_post(name, content):
     collection = db['TestPost']
     collection.insert({'name': name, 'content': content})
-
+    print('post created')
 
 def get_post():
     collection = db['TestPost']
@@ -16,7 +16,9 @@ def get_post():
     posts = []
     for item in data:
         posts.append([item['name'], item['content']])
+    print('post read')
     return posts
+
 
 
 def login_redirect():

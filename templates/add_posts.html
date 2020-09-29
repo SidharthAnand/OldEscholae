@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action='/addpost' method="post">
+
+        <input placeholder="Post" name="post" required>
+        <input type="submit" placeholder="Submit">
+        <a href="/logout">Log Out</a>
+        <a href="/forum">View Posts</a>
+    </form>
+
+
+    {% for message in get_flashed_messages()%}
+        <div class="alert alert-warning" >
+            {{message}}
+        </div>
+    {% endfor %}
+
+</body>
+</html>

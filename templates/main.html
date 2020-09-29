@@ -5,16 +5,17 @@
     <title>Title</title>
 </head>
 <body>
-    <form action="/" method="post">
-        <input placeholder="name" name="name">
-        <input placeholder="Post" name="post">
-        <input type="submit" value="Submit">
         <a href="/logout">Log Out</a>
-    </form>
+        <a href="/addpost">Add Posts</a>
 
     {% for post in posts %}
         <div>{{post[0] + ' says ' + post[1]}}</div>
     {% endfor %}
 
+    {% for message in get_flashed_messages()%}
+        <div class="alert alert-warning" >
+            {{message}}
+        </div>
+    {% endfor %}
 </body>
 </html>

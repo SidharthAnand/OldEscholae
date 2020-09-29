@@ -14,24 +14,33 @@ app.config['SECRET_KEY'] = "SomeSecretText"
 
 mongo = PyMongo(app)
 
+
 @app.route('/forum', methods=['GET', 'POST'])
-def index():
+def view():
+    if request.method == 'GET':
+        pass
+
+    posts = reversed(get_post())
+    return render_template('main.html', posts=posts)
+
+
+@app.route('/addpost', methods=['GET', 'POST'])
+def add_post():
     if request.method == 'GET':
         pass
 
     if request.method == 'POST':
-        name = request.form.get('name')
-        post = request.form.get('post')
+        name = session['username']
+        post = request.form['post']
         create_post(name, post)
-        print('post created ')
+        return redirect('/forum')
 
-    posts = reversed(get_post())
-
-    return render_template('index.html', posts=posts)
+    return render_template('add_posts.html')
 
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
+
     if request.method == 'GET':
         if 'username' in session:
             return redirect('/forum')
@@ -61,6 +70,10 @@ def logout():
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
+    if 'username' not in session:
+        flash('Session Expired. Please Login Again')
+        return redirect('/')
+
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
