@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form role="form" method="post">
+<fieldset>
+<h2>Please Register</h2>
+    <input type="username" name="username" id="username" class="form-control input-lg" placeholder="Enter a Username" required>
+    <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Enter a Password" reqired>
+    <input type="password" placeholder="Repeat Password" id="password-repeat" class="form-control input-lg" name="password-repeat" required>
+    <input type="submit" class="btn btn-lg btn-success btn-block" value="Register">
+    <a href="/" class="btn btn-lg btn-primary btn-block">Sign In</a>
+    </fieldset>
+		</form>
+
+
+{% for message in get_flashed_messages()%}
+    <div class="alert alert-warning" >
+        {{message}}
+    </div>
+{% endfor %}
+</body>
+</html>
