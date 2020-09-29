@@ -24,7 +24,7 @@ def view():
     return render_template('main.html', posts=posts)
 
 
-@app.route('/addpost', methods=['GET', 'POST'])
+@app.route('/add-post', methods=['GET', 'POST'])
 def add_post():
     if request.method == 'GET':
         pass
@@ -40,7 +40,6 @@ def add_post():
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
-
     if request.method == 'GET':
         if 'username' in session:
             return redirect('/forum')
