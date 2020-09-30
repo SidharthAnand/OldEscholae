@@ -17,6 +17,10 @@ mongo = PyMongo(app)
 
 @app.route('/forum', methods=['GET', 'POST'])
 def view():
+    if 'username' not in session:
+        flash('Session Expired. Please Login Again')
+        return redirect('/')
+
     if request.method == 'GET':
         pass
 
@@ -26,6 +30,10 @@ def view():
 
 @app.route('/add-post', methods=['GET', 'POST'])
 def add_post():
+    if 'username' not in session:
+        flash('Session Expired. Please Login Again')
+        return redirect('/')
+
     if request.method == 'GET':
         pass
 
@@ -40,6 +48,8 @@ def add_post():
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
+
+
     if request.method == 'GET':
         if 'username' in session:
             return redirect('/forum')
@@ -52,7 +62,7 @@ def login():
 
     user = collection.find_one({'username': username})
 
-    if user:
+    if user and password == user['password']:
         session['username'] = username
         return redirect('/forum')
     else:
@@ -69,10 +79,6 @@ def logout():
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
-    if 'username' not in session:
-        flash('Session Expired. Please Login Again')
-        return redirect('/')
-
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -97,6 +103,50 @@ def register():
 
     else:
         return render_template('register.html')
+
+
+@app.route('/community', methods=['GET', 'POST'])
+def community():
+    collection = mongo.db.communities
+    if request.method == 'GET':
+        pass
+
+    if request.method == 'POST':
+        subject = request.form['subject']
+        class_name = request.form['class_name']
+        collection.insert_one({'class name': class_name, 'subject': subject, 'posts': []})
+        return redirect('/community')
+
+    communities = get_docs(collection)
+
+    return render_template('community.html', communities=communities)
+
+
+@app.route('/community/<class_code>', methods=['GET', 'POST'])
+def view_community(class_code):
+    communities = []
+    collection = mongo.db.communities
+
+    for x in get_docs(collection):
+        communities.append([x['_id'], x['class name']])
+
+    # print(communities)
+    for x in communities:
+        # print(x)
+        if str(x[0]) == str(class_code):
+            com_name = str(x[1])
+
+
+
+    if request.method == 'POST':
+        entry = request.form['entry']
+        collection.find_one_and_update({'class name': com_name}, {"$push": {"posts": entry}})
+        return redirect('/community/'+class_code)
+
+    sub = collection.find_one({'class name': com_name})['subject']
+    all_posts = reversed(collection.find_one({'class name': com_name})['posts'])
+
+    return render_template('view_community.html', name=com_name, subject=sub, posts=all_posts)
 
 
 if __name__ == '__main__':
