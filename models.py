@@ -10,6 +10,7 @@ def create_post(name, content):
     collection.insert({'name': name, 'content': content})
     print('post created')
 
+
 def get_post():
     collection = db['TestPost']
     data = list(collection.find({}))
@@ -19,6 +20,9 @@ def get_post():
     print('post read')
     return posts
 
+
+def get_docs(collection):
+    return reversed(list(collection.find({})))
 
 
 def login_redirect():

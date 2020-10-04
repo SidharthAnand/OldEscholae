@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <form method="post">
+        <input placeholder="Post" name="entry" required>
+        <input type="submit" placeholder="Submit">
+        <a href="/community">Communities</a>
+        <a href="/logout">Log Out</a>
+    </form>
+
+    <p>{{name}}: {{subject}} </p>
+    {% for x in range(repeat) %}
+        <p>{{users[x]}} says {{posts[x]}}</p>
+        <a href="/community/{{class_id}}/{{ids[x]}}&{{users[x]}}&{{posts[x]}}">Comment</a>
+    {% endfor %}
+
+</body>
+</html>
