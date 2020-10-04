@@ -11,12 +11,16 @@
         <input type="submit" placeholder="Submit">
         <a href="/community">Communities</a>
         <a href="/logout">Log Out</a>
+        <a href="/community/{{code}}">Back</a>
     </form>
 
-    <p>{{name}}: {{subject}} </p>
-    {% for x in range(repeat) %}
-        <p>{{users[x]}} says {{posts[x]}}</p>
-        <a href="/community/{{class_id}}/{{ids[x]}}&{{users[x]}}&{{posts[x]}}">Comment</a>
+    {{name}}
+    {{post}}
+
+    <h1>Comments</h1>
+
+    {% for x in range(l)%}
+        <p>{{r_name[x]}} says {{r_post[x]}}</p>
     {% endfor %}
 
 </body>
