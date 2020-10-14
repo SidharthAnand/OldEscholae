@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+p, blockquote {
+    font-size: .9em;
+    line-height: 1.6em;
+}
+
+ul {
+    list-style-type: none;
+    margin:0;
+    padding:0;
+}
+
+.container {
+    text-align: center;
+    padding: .8em 1.2 em;
+
+}
+
+.logo {
+    width: 250px;
+}
+
+.hide-on-mobile {
+    display:none 
+}
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu {
+    width: 25px;
+    margin-top: 220%;
+    
+}
+
+nav ul {
+    position: fixed;
+    width: 60%;
+    top: 0;
+    right: 0;
+    text-align: left;
+    background: rgb(36,41,44);
+    height: 100%;
+    z-index: 7;
+    padding-top: 3em;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    width: 70%;
+    padding: 1em 2em;
+    background-color: rgb(49, 55, 59);
+}
+
+nav ul li a:hover {
+    background-color: rgb(65, 73, 78);
+}
+
+.exit {
+    margin-bottom: 1em;
+    margin-top: -1.3em;
+    text-align: right;
+    padding: 0 1.4em;
+}
+
+.exit img {
+    width: 15px;
+    cursor: pointer;
+}
+
+.logo_bottom {
+    width: 150px;
+    padding-left: 2.5em;
+    
+}
+
+.footer {
+    width: 100%;
+    background: #3D444A;
+    color: #fff;
+    padding: 3em 0;
+    border-top-right-radius: 40px;
+    transform: skewY(2deg);
+}
+.footer .container {
+    transform: skewY(-2deg);
+}
+.footer:before {
+    content: "";
+    width: 40px;
+    height: 40px;
+    background-color: #3D444A;
+    position: absolute;
+    top: -39px;
+    left: 0;
+    z-index: -2;
+}
+
+.footer:after {
+    content: "";
+    width: 80px;
+    height: 80px;
+    background-color: #fff;
+    position: absolute;
+    z-index: -1;
+    top: -80px;
+    left: 0;
+    border-radius: 50%;
+}
+
+ul.footer_links {
+    margin: 0 auto;
+}
+
+ul.footer_links li {
+    display: inline-block;
+}
+
+ul.footer_links li a {
+    color: #9D9D9D;
+    font-size: .8em;
+}
+
+@media only screen and (min-width: 650px) {
+    nav ul {
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .container {
+        width:90%;
+        margin: 0 auto;
+    }
+
+    .show-on-desktop {
+        display: block;
+        margin: 0 auto 13% auto;
+    }
+
+    .hide-on-desktop {
+        display: none
+    }
+
+    nav ul {
+        position:inherit;
+        width: auto;
+        background: none;
+        height: auto;
+        display: flex;
+    }
+
+    nav ul li {
+        float: left;
+    }
+
+    nav ul li a {
+        color: black;
+        background-color:inherit;
+        text-align: center;
+        padding: 1em 2em;
+    }
+
+    nav ul li a:hover {
+        background-color: inherit;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+
+    .container {
+        width: 90%
+    }
+
+
+}

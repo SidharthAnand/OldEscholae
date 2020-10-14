@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Escholae</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="#" class = "logo"><img src="escholae logo.svg" alt="Siddhu Baiya" class="logo"></a>
+
+            <nav>
+                <a href="#" class = "hide-on-desktop">
+                    <img src="ham.svg" alt="open menu" class = "menu" id = "menu">
+                </a>
+
+                <ul class = "show-on-desktop hide-on-mobile" id="nav">
+                    <li id = "exit" class = "exit hide-on-desktop">
+                        <img src="exit.svg" alt="exit menu">
+                    </li>
+                    <li><a href="#">communities</a></li>
+                    <li><a href="#">about      </a></li>
+                    <li><a href="#">donate     </a></li>
+                    <li class = "signin-button"><a href="#">sign in</a></li>
+
+
+
+                </ul>
+
+            </nav>
+        </header>
+    </div>
+    <footer>
+        <div class = "footer">
+            <div class = "container">
+                <a href="#">
+                    <img src="escholae logo.svg" class = "logo_bottom" alt = "logo">
+                </a>
+                <ul class = "footer_links">
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        var menu = document.getElementById('menu');
+        var nav = document.getElementById('nav');
+        var exit = document.getElementById('exit');
+
+        menu.addEventListener('click', function(e) {
+            nav.classList.toggle('hide-on-mobile');
+            e.preventDefault();
+        });
+
+        exit.addEventListener('click', function(e) {
+            nav.classList.add('hide-on-mobile');
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
